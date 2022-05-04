@@ -17,8 +17,8 @@ public class YoutubeHttpContextFilter extends BaseYoutubeHttpContextFilter {
 
   private static final String ATTRIBUTE_RESET_RETRY = "isResetRetry";
 
-  private static String PAPISID = "";
-  private static String PSID = "";
+  private static String PAPISID = "whHekqAQGgFHcWKv/ACr5ezxcPU76Be5pW";
+  private static String PSID = "JwimRbk0x7gGol6kIuamI8E70ZU7-1i2RAU43PTEZz9HwSXXQkdOrm9nAljJozByLJi_lw.";
 
   public static void setPAPISID(String value) {
     PAPISID = value;
