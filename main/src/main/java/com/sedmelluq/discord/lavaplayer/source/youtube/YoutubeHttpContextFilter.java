@@ -55,15 +55,12 @@ public class YoutubeHttpContextFilter extends BaseYoutubeHttpContextFilter {
     if (isPbjRequest(request)) {
       addPbjHeaders(request);
     }
+    long millis = System.currentTimeMillis();
+    String SAPISIDHASH = DigestUtils.sha1Hex(millis + " " + PAPISID + " " + YOUTUBE_ORIGIN);
 
-    if (!PAPISID.isEmpty() && !PSID.isEmpty()) {
-      long millis = System.currentTimeMillis();
-      String SAPISIDHASH = DigestUtils.sha1Hex(millis + " " + PAPISID + " " + YOUTUBE_ORIGIN);
-
-      request.setHeader("Cookie", "__Secure-3PAPISID=" + PAPISID + " __Secure-3PSID=" + PSID);
-      request.setHeader("Origin", YOUTUBE_ORIGIN);
-      request.setHeader("Authorization", "SAPISIDHASH " + millis + "_" + SAPISIDHASH);
-    }
+    request.setHeader("Cookie", "__Secure-3PAPISID=" + PAPISID + " __Secure-3PSID=" + PSID + "__Secure-3PSIDCC=AJi4QfHGXS6ow_oTfDyY_sdv9IfPEXgc2G2PS0mjgtFfTLuAGdx2ZTnr-4uxgGbNHxhIqq-o");
+    request.setHeader("Origin", YOUTUBE_ORIGIN);
+    request.setHeader("Authorization", "SAPISIDHASH " + millis + "_" + SAPISIDHASH);
 
     super.onRequest(context, request, isRepetition);
   }
